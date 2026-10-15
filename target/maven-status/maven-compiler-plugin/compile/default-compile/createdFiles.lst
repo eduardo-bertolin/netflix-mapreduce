@@ -1,0 +1,10 @@
+com\hadoop\netflix\NetflixSummaryReducer.class
+com\hadoop\netflix\CsvParser.class
+com\hadoop\netflix\NetflixStatsMapper.class
+com\hadoop\netflix\NetflixSummaryReducer$2.class
+com\hadoop\netflix\NetflixStatsReducer.class
+com\hadoop\netflix\NetflixDriver.class
+com\hadoop\netflix\NetflixSummaryMapper.class
+com\hadoop\netflix\TextNormalizer.class
+com\hadoop\netflix\NetflixSummaryReducer$1.class
+com\hadoop\netflix\NetflixSummaryReducer$WordCount.class
