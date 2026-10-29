@@ -1,0 +1,91 @@
+===============================================================================
+                    RECOMENDACAO DE FILME NETFLIX
+                  Baseado em Analise de Big Data (Hadoop)
+===============================================================================
+
+-------------------------------------------------------------------------------
+| DETALHES DO FILME                                                         |
+-------------------------------------------------------------------------------
+
+  * TITULO        : The Life Young
+  * DURACAO       : 100 min
+  * GENERO        : International Movies, Dramas, Comedies
+  * PAIS          : United States
+  * ANO LANCAMENTO: 2026
+  
+  * ELENCO        : Anupam Kher, Shah Rukh Khan, Naseeruddin Shah, 
+                    Akshay Kumar, Om Puri
+  
+  * DIRETOR       : Rajiv Chilaka
+  
+  * DESCRICAO     :
+     When a young detective uncovers mysterious connections between life 
+     and young, their life takes an unexpected turn. As dark secrets 
+     emerge, they must navigate a dangerous world where new is what it 
+     seems.
+
+-------------------------------------------------------------------------------
+| JUSTIFICATIVA BASEADA EM DADOS                                            |
+-------------------------------------------------------------------------------
+
+  > SELECAO DE GENERO
+    Os generos escolhidos representam as categorias mais populares no
+    catalogo de filmes da Netflix:
+    1. International Movies (2752 filmes)
+    2. Dramas (2427 filmes)
+    3. Comedies (1674 filmes)
+    4. Documentaries (868 filmes)
+    5. Action & Adventure (859 filmes)
+
+  > ANALISE DE DURACAO
+    Duracao media de filmes: 100 minutos
+    Faixa de variacao: 3 - 312 min
+    Duracao mais comum (mediana): 98 min
+    Total de filmes analisados: 6127
+    Nossa escolha esta alinhada com o padrao do mercado.
+
+  > SELECAO DO ELENCO
+    Os atores selecionados possuem historico comprovado no catalogo:
+    - Anupam Kher: 42 filmes na Netflix
+    - Shah Rukh Khan: 35 filmes na Netflix
+    - Naseeruddin Shah: 32 filmes na Netflix
+    - Akshay Kumar: 30 filmes na Netflix
+    - Om Puri: 30 filmes na Netflix
+
+  > ESCOLHA DO DIRETOR
+    Rajiv Chilaka dirigiu 22 filmes no catalogo Netflix.
+    Experiencia e consistencia tornam esta uma escolha fundamentada.
+
+  > PALAVRAS-CHAVE NA DESCRICAO
+    Principais palavras em descricoes de filmes (frequencia):
+    - "life" (573 ocorrencias)
+    - "young" (558 ocorrencias)
+    - "new" (478 ocorrencias)
+    - "man" (452 ocorrencias)
+    - "family" (440 ocorrencias)
+    - "woman" (383 ocorrencias)
+    - "two" (354 ocorrencias)
+    - "love" (335 ocorrencias)
+    Nossa descricao incorpora estes termos de engajamento comprovado.
+
+  > PAIS E MERCADO
+    United States possui 2363 filmes no catalogo (~39% do mercado),
+    representando um dos maiores mercados de producao.
+
+===============================================================================
+| INDICE DE CONFIANCA: #################### 95/100                        |
+| Baseado em popularidade do genero, confiabilidade do elenco e tendencias |
+===============================================================================
+
+
+ESTATISTICAS DO PROCESSAMENTO:
+- Total de filmes analisados: 6.127
+- Atores identificados: 3.723 (com 3+ filmes)
+- Diretores identificados: 968 (com 2+ filmes)
+- Palavras-chave extraidas: 15.469
+- Generos catalogados: 20
+- Paises produtores: 78
+- Tempo de processamento: ~12 segundos
+- Jobs MapReduce executados: 7
+
+===============================================================================

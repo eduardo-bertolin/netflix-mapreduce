@@ -1,0 +1,38 @@
+# Compiled class files
+*.class
+build/
+target/
+
+# JAR files
+*.jar
+
+# Hadoop output directories
+output/
+output_temp/
+
+# Temporary files
+tmp/
+*.log
+*.tmp
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# Hadoop specific
+.part-*.crc
+._SUCCESS.crc
+_SUCCESS
+
+# File list cache
+sources.txt
