@@ -36,3 +36,6 @@ _SUCCESS
 
 # File list cache
 sources.txt
+
+# OS
+.DS_Store
