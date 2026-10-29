@@ -14,12 +14,12 @@ set "PATH=%JAVA_HOME%\bin;%HADOOP_HOME%\bin;%PATH%"
 
 cd /d C:\netflix-hadoop\trabalho2
 
-echo [1/4] Limpando builds anteriores...
+echo [1/5] Limpando builds anteriores...
 if exist build rmdir /s /q build 2>nul
 mkdir build 2>nul
 
 echo.
-echo [2/4] Compilando arquivos Java...
+echo [2/5] Compilando arquivos Java...
 dir /s /b src\*.java > sources.txt 2>nul
 
 "%JAVA_HOME%\bin\javac.exe" -encoding UTF-8 -cp "%HADOOP_HOME%\share\hadoop\common\*;%HADOOP_HOME%\share\hadoop\mapreduce\*" -d build @sources.txt
@@ -35,7 +35,7 @@ del sources.txt
 echo [OK] Compilacao concluida!
 
 echo.
-echo [3/4] Criando arquivo JAR...
+echo [3/5] Criando arquivo JAR...
 cd build
 "%JAVA_HOME%\bin\jar.exe" cf ..\netflix-trabalho2.jar *
 cd ..
@@ -43,24 +43,58 @@ if exist build rmdir /s /q build
 echo [OK] JAR criado!
 
 echo.
-echo [4/4] Preparando ambiente de execucao...
-if not exist tmp mkdir tmp
+echo [4/5] Limpando diretorios de output (FORCADO)...
+echo IMPORTANTE: Fechando processos que possam estar usando os arquivos...
 
-echo Limpando diretorios antigos...
-timeout /t 1 /nobreak >nul 2>&1
+REM Tentar deletar multiplas vezes com intervalos
+for %%d in (output output_temp) do (
+    if exist %%d (
+        echo Removendo %%d...
+        rmdir /s /q %%d 2>nul
+        timeout /t 1 /nobreak >nul 2>&1
+        if exist %%d (
+            rd /s /q %%d 2>nul
+            timeout /t 1 /nobreak >nul 2>&1
+        )
+        if exist %%d (
+            echo [AVISO] Nao foi possivel remover completamente %%d
+            echo Tentando remover conteudo interno...
+            del /f /s /q %%d\*.* 2>nul
+            for /d %%i in (%%d\*) do rmdir /s /q "%%i" 2>nul
+        )
+    )
+)
+
+if not exist tmp mkdir tmp
+echo [OK] Limpeza concluida!
+
+echo.
+echo [5/5] Verificacao final...
+if exist output (
+    echo [ERRO CRITICO] O diretorio 'output' ainda existe!
+    echo.
+    echo SOLUCAO MANUAL:
+    echo 1. Feche este terminal
+    echo 2. Delete manualmente as pastas 'output' e 'output_temp'
+    echo 3. Execute o script novamente
+    echo.
+    pause
+    exit /b 1
+)
 
 if exist output_temp (
-    rmdir /s /q output_temp 2>nul
-    if exist output_temp rd /s /q output_temp 2>nul
+    echo [ERRO CRITICO] O diretorio 'output_temp' ainda existe!
+    echo.
+    echo SOLUCAO MANUAL:
+    echo 1. Feche este terminal
+    echo 2. Delete manualmente as pastas 'output' e 'output_temp'
+    echo 3. Execute o script novamente
+    echo.
+    pause
+    exit /b 1
 )
 
-if exist output (
-    rmdir /s /q output 2>nul
-    if exist output rd /s /q output 2>nul
-)
-
-timeout /t 1 /nobreak >nul 2>&1
-echo [OK] Ambiente preparado!
+echo [OK] Ambiente preparado para execucao!
 
 echo.
 echo ================================================================
@@ -69,7 +103,7 @@ echo   Serao executados 7 jobs MapReduce em sequencia
 echo ================================================================
 echo.
 
-hadoop jar netflix-trabalho2.jar com.hadoop.netflix.MovieAnalysisDriver -fs file:/// -Dhadoop.tmp.dir=C:/netflix-hadoop/trabalho2/tmp input/netflix_titles.csv output
+hadoop jar netflix-trabalho2.jar com.hadoop.netflix.MovieAnalysisDriver input/netflix_titles.csv output
 
 if errorlevel 1 (
     echo.
